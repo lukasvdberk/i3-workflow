@@ -7,7 +7,8 @@ You can select for each application on which workspace it should be started
 https://user-images.githubusercontent.com/38686669/124397406-e9b2f700-dd0f-11eb-821a-3f23087dee14.mp4
 
 
-Demo starting 3 application on seperate workspaces
+Demo starting 3 applications on seperate workspaces. This can all be configured through a JSON file.
+
 ### Installation package
 TODO will come to pypi probably
 
