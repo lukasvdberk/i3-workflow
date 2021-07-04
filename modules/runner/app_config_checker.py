@@ -1,8 +1,8 @@
-from models.app_config import AppConfig
+from models.app_config import ApplicationConfig
 
 
 class AppConfigChecker:
-    def __init__(self, app_config: AppConfig):
+    def __init__(self, app_config: ApplicationConfig):
         self.app_config = app_config
 
     def do_all_workspaces_exist_of_config(self):
