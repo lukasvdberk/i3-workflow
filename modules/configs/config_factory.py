@@ -13,6 +13,6 @@ class ConfigFactory:
         return JSONFileConfigParser()
 
     @staticmethod
-    def get_certain_parser(config_type: ConfigTypes.member_type):
+    def get_specific_parser(config_type):
         if ConfigTypes.JSON_PARSER == config_type:
             return JSONFileConfigParser()

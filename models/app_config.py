@@ -3,9 +3,13 @@ from models.workspace import Workspace
 
 
 class ApplicationConfig:
-    def __init__(self, application_spawners: list[ApplicationSpawner], all_workspaces: list[Workspace]):
+    def __init__(self, name: str, application_spawners: list[ApplicationSpawner], all_workspaces: list[Workspace]):
+        self.name = name
         self.application_spawners = application_spawners
         self.all_workspaces = all_workspaces
+
+    def get_config_name(self):
+        return self.name
 
     def get_application_spawners(self):
         return self.application_spawners
