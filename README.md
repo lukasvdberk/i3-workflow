@@ -1,8 +1,13 @@
 # i3 workflow
 An application to group different application together in i3wm and start them together to fasten your workflow.
 You can select for each application on which workspace it should be started
-- WARNING This will edit your existing config file
+- WARNING This will edit your i3 existing config file
 
+
+https://user-images.githubusercontent.com/38686669/124397406-e9b2f700-dd0f-11eb-821a-3f23087dee14.mp4
+
+
+Demo starting 3 application on seperate workspaces
 ### Installation package
 TODO will come to pypi probably
 
