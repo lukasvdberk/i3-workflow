@@ -1,7 +1,9 @@
-from default_config import I3_CONFIG_FILE
+from default_config import I3_CONFIG_FILE, I3_BACKUP_CONFIG_FILE_LOCATION
 from models.app_config import AppConfig
 from models.application_spawner import ApplicationSpawner
 import os
+import shutil
+
 
 class AppRunner:
     def __init__(self, app_config: AppConfig):
@@ -13,7 +15,7 @@ class AppRunner:
             self._spawn_application(app_spawner)
 
     def _assign_windows(self):
-        self._clear_previous_windows()
+        self._clear_previous_windows_assigment()
         if os.path.isfile(I3_CONFIG_FILE):
             raise Exception('i3 location file does not exists at location ' + I3_CONFIG_FILE)
 
@@ -26,8 +28,19 @@ class AppRunner:
         with open(I3_CONFIG_FILE, 'a') as i3_config_file:
             i3_config_file.writelines(assigned_window_names_rule)
 
-    def _clear_previous_windows(self):
-        pass
+        self._restart_i3_config()
+
+    def _clear_previous_windows_assigment(self):
+        # saves current config as backup
+        try:
+            shutil.copyfile(I3_BACKUP_CONFIG_FILE_LOCATION, I3_CONFIG_FILE)
+        except:
+            # no previous configuration was set
+            pass
+
+    def _restart_i3_config(self):
+        os.system('i3 reload')
+        os.system('i3 restart')
 
     def _spawn_application(self, app_spawner: ApplicationSpawner):
         pass
