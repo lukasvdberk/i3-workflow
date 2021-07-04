@@ -37,7 +37,9 @@ class ApplicationRunner:
 
         for app_spawner in self.app_config.get_application_spawners():
             for window_name in app_spawner.application.get_window_names():
-                assigned_window_names_rules.append(f'assign [class="{window_name}"] 4:1')
+                assigned_window_names_rules.append(
+                    f'assign [class="{window_name}"] {app_spawner.get_workspace().get_name()}'
+                )
 
         self._backup_original_config()
 
