@@ -4,17 +4,7 @@ from models.workspace import Workspace
 
 
 class ApplicationSpawner:
-    def __init__(self, workspace: Workspace, application: Application):
-        """
-        Application spawner combines the workspace and application to be spawned
-        :param workspace: On which workspace it should spawn
-        :param application: The application to spawn on the defined workspace
-        """
-        self.workspace = workspace
-        self.application = application
-        self.amount = 1
-
-    def __init__(self, workspace: Workspace, application: Application, amount: int):
+    def __init__(self, workspace: Workspace, application: Application, amount: int = 1):
         """
         Application spawner combines the workspace and application to be spawned
         :param workspace: On which workspace it should spawn
