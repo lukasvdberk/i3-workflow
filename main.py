@@ -1,10 +1,10 @@
-from models.app_config import ApplicationConfig
+from models.app_config import ApplicationGroupConfig
 from modules.configs.config_factory import ConfigFactory
 from modules.runner.app_runner import ApplicationRunner
 from pick import pick
 
 
-def pick_config(app_configs: list[ApplicationConfig]):
+def pick_config(app_configs: list[ApplicationGroupConfig]):
     title = 'Choose which app config to start:  '
     config_options = list(map(lambda c: c.get_config_name(), app_configs))
     option, index = pick(config_options, title)
@@ -13,10 +13,10 @@ def pick_config(app_configs: list[ApplicationConfig]):
 
 
 def main():
-    app_configs = ConfigFactory.get_default_parser().get_config()
+    group_configs = ConfigFactory.get_default_parser().get_config()
 
-    chosen_app_config = pick_config(app_configs)
-    app_runner = ApplicationRunner(chosen_app_config)
+    chosen_group_config = pick_config(group_configs)
+    app_runner = ApplicationRunner(chosen_group_config)
     app_runner.spawn_work_spaces()
 
 

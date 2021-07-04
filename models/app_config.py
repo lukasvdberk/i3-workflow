@@ -2,7 +2,7 @@ from models.application_spawner import ApplicationSpawner
 from models.workspace import Workspace
 
 
-class ApplicationConfig:
+class ApplicationGroupConfig:
     def __init__(self, name: str, application_spawners: list[ApplicationSpawner], all_workspaces: list[Workspace]):
         self.name = name
         self.application_spawners = application_spawners

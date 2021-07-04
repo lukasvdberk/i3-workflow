@@ -1,6 +1,6 @@
 import json
 from default_config import DEFAULT_JSON_FILE_LOCATION
-from models.app_config import ApplicationConfig
+from models.app_config import ApplicationGroupConfig
 from models.application import Application
 from models.application_spawner import ApplicationSpawner
 from models.workspace import Workspace
@@ -30,7 +30,7 @@ class JSONFileConfigParser(IConfigParser):
 
     @staticmethod
     def create_from_dict(config_dic):
-        return ApplicationConfig(
+        return ApplicationGroupConfig(
             name=config_dic["name"],
             all_workspaces=list(map(lambda w: Workspace(w["name"]), config_dic["all_workspaces"])),
             application_spawners=list(map(lambda s:

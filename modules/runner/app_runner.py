@@ -1,12 +1,12 @@
 from default_config import I3_CONFIG_FILE, I3_BACKUP_CONFIG_FILE_LOCATION
-from models.app_config import ApplicationConfig
+from models.app_config import ApplicationGroupConfig
 from models.application_spawner import ApplicationSpawner
 import os
 import shutil
 
 
 class ApplicationRunner:
-    def __init__(self, app_config: ApplicationConfig):
+    def __init__(self, app_config: ApplicationGroupConfig):
         self.app_config = app_config
 
     def spawn_work_spaces(self):
