@@ -50,6 +50,7 @@ class ApplicationRunner:
             i3_config_file.writelines(assigned_window_names_rules)
 
         self._restart_i3_config()
+        # TODO reset previous options
 
     def _clear_previous_windows_assigment(self):
         try:
