@@ -10,7 +10,15 @@ class AppRunner:
         self.app_config = app_config
 
     def spawn_work_spaces(self):
+        """
+        Spawns the provided apps provided in the app config.
+        NOTE this will edit your i3wm config file
+        :return:
+        """
         # TODO add config check
+
+        self._assign_windows()
+
         for app_spawner in self.app_config.get_application_spawners():
             self._spawn_application(app_spawner)
 
@@ -61,4 +69,4 @@ class AppRunner:
         os.system('i3 restart')
 
     def _spawn_application(self, app_spawner: ApplicationSpawner):
-        pass
+        os.system(f'sh -c "{app_spawner.application.get_execution_path()}" &')
