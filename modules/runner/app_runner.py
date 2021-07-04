@@ -31,11 +31,11 @@ class AppRunner:
             for window_name in app_spawner.application.get_window_names():
                 assigned_window_names_rule.append(f'assign [class="{window_name}"] 4:1')
 
+        self._backup_original_config()
         with open(I3_CONFIG_FILE, 'a') as i3_config_file:
             i3_config_file.writelines(assigned_window_names_rule)
 
         self._restart_i3_config()
-        self._backup_original_config()
 
     def _clear_previous_windows_assigment(self):
         try:
@@ -47,7 +47,10 @@ class AppRunner:
 
     def _backup_original_config(self):
         try:
-            # saves current config as backup
+            if os.path.isfile(I3_BACKUP_CONFIG_FILE_LOCATION):
+                return
+
+            # make an backup of the original config file
             shutil.copyfile(I3_CONFIG_FILE, I3_BACKUP_CONFIG_FILE_LOCATION)
         except:
             # no previous configuration was set
