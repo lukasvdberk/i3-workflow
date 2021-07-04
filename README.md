@@ -3,10 +3,10 @@ An application to group different application together in i3wm and start them to
 You can select for each application on which workspace it should be started
 - WARNING This will edit your existing config file
 
-# Installation package
+### Installation package
 TODO will come to pypi probably
 
-# Installation and setup (dev)
+### Installation and setup (dev)
 This project uses python3.9 with pipenv. Simply clone the repository and do the following steps.
 
 Install the dependencies
