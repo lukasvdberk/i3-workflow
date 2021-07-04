@@ -1,41 +1,64 @@
-[
-  {
-    "name": "Test workspace",
-    "application_spawners": [
-      {
-        "amount": 1,
-        "application": {
-          "execution_path": "/usr/bin/firefox",
-          "window_names": [
-            "Firefox",
-            "firefox"
-          ]
+{
+  "group-configs": [
+    {
+      "name": "Firefox and vscode",
+      "application_spawners": [
+        {
+          "amount": 1,
+          "application": {
+            "execution_path": "/usr/bin/firefox localhost",
+            "window_names": [
+              "Firefox",
+              "firefox"
+            ]
+          },
+          "workspace": {
+            "name": "1:1"
+          }
         },
-        "workspace": {
-          "name": "Web"
+        {
+          "amount": 4,
+          "application": {
+            "execution_path": "/snap/bin/code",
+            "window_names": [
+              "code",
+              "VSCode"
+            ]
+          },
+          "workspace": {
+            "name": "Coding"
+          }
         }
-      },
-            {
-        "amount": 4,
-        "application": {
-          "execution_path": "/usr/bin/kitty",
-          "window_names": [
-            "Kitty",
-            "kitty"
-          ]
-        },
-        "workspace": {
-          "name": "Terminals"
-        }
-      }
-    ],
-    "all_workspaces": [
+      ]
+    },
+    {
+        "name": "Test terminal group",
+        "application_spawners": [
+          {
+            "amount": 4,
+            "application": {
+              "execution_path": "/usr/bin/kitty",
+              "window_names": [
+                "Kitty",
+                "kitty"
+              ]
+            },
+            "workspace": {
+              "name": "Terminal"
+            }
+          }
+        ]
+    }
+  ],
+  "all_workspaces": [
       {
         "name": "Web"
       },
       {
-        "name": "Terminals"
+        "name": "Coding"
+      },
+      {
+        "name": "Terminal"
       }
-    ]
-  }
-]
+  ]
+}

@@ -24,15 +24,17 @@ class JSONFileConfigParser(IConfigParser):
 
     def get_config(self):
         with open(DEFAULT_JSON_FILE_LOCATION, 'r') as json_config_file:
-            list_of_config_dic = json.load(json_config_file)
+            global_config = json.load(json_config_file)
+            all_workspaces = list(map(lambda w: Workspace(w["name"]), global_config["all_workspaces"])),
 
-            return list(map(JSONFileConfigParser.create_from_dict, list_of_config_dic))
+            return list(map(lambda config: JSONFileConfigParser.create_from_dict(config, all_workspaces),
+                            global_config["group-configs"]))
 
     @staticmethod
-    def create_from_dict(config_dic):
+    def create_from_dict(config_dic, all_workspaces):
         return ApplicationGroupConfig(
             name=config_dic["name"],
-            all_workspaces=list(map(lambda w: Workspace(w["name"]), config_dic["all_workspaces"])),
+            all_workspaces=all_workspaces,
             application_spawners=list(map(lambda s:
               ApplicationSpawner(
                   Workspace(s["workspace"]["name"]),

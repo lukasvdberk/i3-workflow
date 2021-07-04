@@ -7,7 +7,7 @@ from pick import pick
 def pick_config(app_configs: list[ApplicationGroupConfig]):
     title = 'Choose which app config to start:  '
     config_options = list(map(lambda c: c.get_config_name(), app_configs))
-    option, index = pick(config_options, title)
+    option, index = pick(config_options, title, indicator='=> ')
 
     return app_configs[index]
 

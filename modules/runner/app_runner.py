@@ -4,6 +4,8 @@ from models.application_spawner import ApplicationSpawner
 import os
 import shutil
 
+from modules.helpers.command_executor import execute_os_command
+
 
 class ApplicationRunner:
     def __init__(self, app_config: ApplicationGroupConfig):
@@ -72,9 +74,9 @@ class ApplicationRunner:
             pass
 
     def _restart_i3_config(self):
-        os.system('i3 reload')
-        os.system('i3 restart')
+        execute_os_command('i3 reload')
+        execute_os_command('i3 restart')
 
     def _spawn_application(self, app_spawner: ApplicationSpawner):
         for _ in range(app_spawner.get_amount_of_applications_to_spawn()):
-            os.system(f'sh -c "{app_spawner.application.get_execution_path()}" &')
+            execute_os_command(f'sh -c "{app_spawner.application.get_execution_path()}" &')
