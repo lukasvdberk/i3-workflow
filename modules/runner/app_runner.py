@@ -24,6 +24,14 @@ class ApplicationRunner:
         for app_spawner in self.app_config.get_application_spawners():
             self._spawn_application(app_spawner)
 
+    def restore_config(self):
+        """
+        Restores the orignal config and restart i3wm (run this after you succesfully run spawn_work_spaces)
+        :return:
+        """
+        self._clear_previous_windows_assigment()
+        self._restart_i3_config()
+
     def _assign_windows(self):
         """
         Modifies user his i3wm config to spawn windows at certain workspaces

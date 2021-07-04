@@ -19,6 +19,9 @@ def main():
     app_runner = ApplicationRunner(chosen_group_config)
     app_runner.spawn_work_spaces()
 
+    input("Press enter to confirm all the windows have started (you config will be restored)")
+    app_runner.restore_config()
+
 
 if __name__ == '__main__':
     main()
