@@ -15,7 +15,7 @@ setup(
         'pick',
     ],
     classifiers=[
-        'Development Status :: 1 - Finale',
+        'Development Status :: 1 - Production/Stable',
         # Chose either "3 - Alpha", "4 - Beta" or "5 - Production/Stable" as the current state of your package
         'License :: OSI Approved :: MIT License',  # Again, pick a license
         'Programming Language :: Python :: 3.9',  # Specify which python versions that you want to support
