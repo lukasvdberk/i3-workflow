@@ -4,27 +4,24 @@ from models.application_spawner import ApplicationSpawner
 from models.workspace import Workspace
 from modules.configs.config_factory import ConfigFactory
 from modules.runner.app_runner import ApplicationRunner
+from pick import pick
 
 
-def main_json_config():
-    app = ConfigFactory.get_default_parser().get_config()
-    print(app)
-    # app.spawn_work_spaces()
+def pick_config(app_configs: list[ApplicationConfig]):
+    title = 'Choose which app config to start:  '
+    config_options = list(map(lambda c: c.get_config_name(), app_configs))
+    option, index = pick(config_options, title)
+
+    return app_configs[index]
 
 
-def main_python_config():
-    app_spawners = [
-        ApplicationSpawner(Workspace("5:2"), Application("/usr/bin/firefox", ["Firefox", "firefox"]), 4),
-        ApplicationSpawner(Workspace("5:2"), Application("/Applications/Shadow.AppImage --no-sandbox", ["Shadow", "shadow"]), 1),
-        ApplicationSpawner(Workspace("6:2"), Application("/usr/bin/kitty", ["kitty", "Kitty"]), 4),
-    ]
-    # not used yet
-    all_workspaces = []
-    app_config = ApplicationConfig(app_spawners, all_workspaces)
+def main():
+    app_configs = ConfigFactory.get_default_parser().get_config()
 
-    app = ApplicationRunner(app_config)
-    app.spawn_work_spaces()
+    chosen_app_config = pick_config(app_configs)
+    app_runner = ApplicationRunner(chosen_app_config)
+    app_runner.spawn_work_spaces()
 
 
 if __name__ == '__main__':
-    main_json_config()
+    main()
