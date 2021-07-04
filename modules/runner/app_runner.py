@@ -1,12 +1,12 @@
 from default_config import I3_CONFIG_FILE, I3_BACKUP_CONFIG_FILE_LOCATION
-from models.app_config import AppConfig
+from models.app_config import ApplicationConfig
 from models.application_spawner import ApplicationSpawner
 import os
 import shutil
 
 
-class AppRunner:
-    def __init__(self, app_config: AppConfig):
+class ApplicationRunner:
+    def __init__(self, app_config: ApplicationConfig):
         self.app_config = app_config
 
     def spawn_work_spaces(self):
@@ -29,19 +29,22 @@ class AppRunner:
         """
         # to start in a clean sate
         self._clear_previous_windows_assigment()
-        if os.path.isfile(I3_CONFIG_FILE):
+        if not os.path.isfile(I3_CONFIG_FILE):
             raise Exception('i3 location file does not exists at location ' + I3_CONFIG_FILE)
 
         # rules for were windows should spawn
-        assigned_window_names_rule = []
+        assigned_window_names_rules = []
 
         for app_spawner in self.app_config.get_application_spawners():
             for window_name in app_spawner.application.get_window_names():
-                assigned_window_names_rule.append(f'assign [class="{window_name}"] 4:1')
+                assigned_window_names_rules.append(f'assign [class="{window_name}"] 4:1')
 
         self._backup_original_config()
         with open(I3_CONFIG_FILE, 'a') as i3_config_file:
-            i3_config_file.writelines(assigned_window_names_rule)
+            for i in range(len(assigned_window_names_rules)):
+                # append to new line
+                assigned_window_names_rules[i] = assigned_window_names_rules[i] + '\n'
+            i3_config_file.writelines(assigned_window_names_rules)
 
         self._restart_i3_config()
 
