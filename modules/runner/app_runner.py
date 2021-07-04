@@ -40,6 +40,7 @@ class ApplicationRunner:
                 assigned_window_names_rules.append(f'assign [class="{window_name}"] 4:1')
 
         self._backup_original_config()
+
         with open(I3_CONFIG_FILE, 'a') as i3_config_file:
             for i in range(len(assigned_window_names_rules)):
                 # append to new line
@@ -72,4 +73,5 @@ class ApplicationRunner:
         os.system('i3 restart')
 
     def _spawn_application(self, app_spawner: ApplicationSpawner):
-        os.system(f'sh -c "{app_spawner.application.get_execution_path()}" &')
+        for _ in range(app_spawner.get_amount_of_applications_to_spawn()):
+            os.system(f'sh -c "{app_spawner.application.get_execution_path()}" &')
