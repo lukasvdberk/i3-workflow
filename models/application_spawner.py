@@ -19,7 +19,7 @@ class ApplicationSpawner:
         Application spawner combines the workspace and application to be spawned
         :param workspace: On which workspace it should spawn
         :param application: The application to spawn on the defined workspace
-        :param amount: Amount of time the application should spwan on the given workspace
+        :param amount: Amount of time the application should spawn on the given workspace
         """
         self.workspace = workspace
         self.application = application
