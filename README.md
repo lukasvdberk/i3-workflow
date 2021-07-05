@@ -10,7 +10,10 @@ https://user-images.githubusercontent.com/38686669/124397406-e9b2f700-dd0f-11eb-
 Demo starting 3 applications on seperate workspaces. This can all be configured through a JSON file.
 
 ### Installation package
-TODO will come to pypi probably
+It is available from PyPi install with.
+```bash
+pip install i3-workflow --user
+```
 
 ### Installation and setup (dev)
 This project uses python3.9 with pipenv. Simply clone the repository and do the following steps.
