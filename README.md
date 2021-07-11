@@ -31,5 +31,5 @@ Customize your settings with the provided config/example.config.json file (you a
 
 Run the app
 ```bash
-python main.py "path/to-your/json-config-file.json"
+python i3-workflow/main.py "path/to-your/json-config-file.json"
 ```
